@@ -1,0 +1,74 @@
+Table Customers {
+  customer_id int [pk]
+  customer_segment varchar
+  customer_city varchar
+  customer_state varchar
+  customer_country varchar
+}
+
+Table Orders {
+  order_id int [pk]
+  customer_id int
+  order_date datetime
+  order_status varchar
+  order_city varchar
+  order_state varchar
+  order_country varchar
+  order_region varchar
+  market varchar
+  payment_type varchar
+  order_profit decimal
+}
+
+Table Order_Items {
+  order_item_id int [pk]
+  order_id int
+  product_id int
+  quantity int
+  unit_price decimal
+  gross_sales decimal
+  discount_amount decimal
+  discount_rate decimal
+  net_sales decimal
+  profit_ratio decimal
+}
+
+Table Products {
+  product_id int [pk]
+  category_id int
+  product_name varchar
+  product_price decimal
+
+}
+
+Table Categories {
+  category_id int [pk]
+  category_name varchar
+  department_id int
+}
+
+Table Departments {
+  department_id int [pk]
+  department_name varchar
+}
+
+Table Shipping {
+  order_id int [pk]
+  shipping_date datetime
+  shipping_mode varchar
+  delivery_status varchar
+  late_delivery_risk int
+  scheduled_shipping_days int
+  actual_shipping_days int
+}
+
+Ref: Orders.customer_id > Customers.customer_id
+
+Ref: Order_Items.order_id > Orders.order_id
+Ref: Order_Items.product_id > Products.product_id
+
+Ref: Products.category_id > Categories.category_id
+
+Ref: Categories.department_id > Departments.department_id
+
+Ref: Shipping.order_id - Orders.order_id
