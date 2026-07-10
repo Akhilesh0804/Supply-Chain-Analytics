@@ -1,10 +1,11 @@
-# Dataset
+This project uses the DataCo Global Supply Chain Dataset.
 
-This project uses the **DataCo Global Supply Chain Dataset**.
+The dataset is not included in this repository because of its size.
 
-Due to GitHub file size limitations, the dataset is not included in this repository.
+Download:
+https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis
 
-Download the dataset from Kaggle and place the following files inside the `data/` folder:
+Place the following files inside this folder before running the project:
 
 - DataCoSupplyChainDataset.csv
 - DescriptionDataCoSupplyChain.csv
