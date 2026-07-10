@@ -1,0 +1,33 @@
+Supply-Chain-Analytics/
+│
+├── README.md
+│
+├── data/
+│   ├── DataCoSupplyChainDataset.csv
+│   └── DescriptionDataCoSupplyChain.csv
+│
+├── notebooks/
+│   ├── data_cleaning.ipynb
+│   └── eda.ipynb
+│
+├── sql/
+│   ├── 01_create_schema.sql
+│   ├── 02_insert_data.sql
+│   ├── 03_data_validation.sql
+│   ├── 04_business_queries.sql
+│   └── 05_advanced_queries.sql
+│
+├── powerbi/
+│   └── Supply_Chain_Dashboard.pbix
+│
+├── erd/
+│   ├── erd.png
+│   └── schema.dbml
+│
+├── screenshots/
+│   ├── dashboard.png
+│   ├── erd.png
+│   └── query_results.png
+│
+└── docs/
+    └── project_report.pdf
