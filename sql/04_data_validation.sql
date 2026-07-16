@@ -12,7 +12,7 @@
 -- • Business Rule Validation
 -- ==========================================================
 
--- Row count validation 
+-- Row count validation: 
 SELECT COUNT(*) AS customers FROM customers;
 SELECT COUNT(*) AS departments FROM departments;
 SELECT COUNT(*) AS categories FROM categories;
@@ -20,6 +20,10 @@ SELECT COUNT(*) AS products FROM products;
 SELECT COUNT(*) AS orders FROM orders;
 SELECT COUNT(*) AS shipping FROM shipping;
 SELECT COUNT(*) AS order_items FROM order_items;
+
+-- ==========================================================
+
+-- Referential Integrity:
 
 -- Every Order Item belongs to an Order
 SELECT COUNT(*)
@@ -59,3 +63,59 @@ FROM shipping s
 LEFT JOIN orders o
 ON s.order_id = o.order_id
 WHERE o.order_id IS NULL;
+
+-- ==========================================================
+
+-- Business Rule Validation:
+
+-- Every Order has at least one Order Item
+SELECT COUNT(*)
+FROM orders o
+LEFT JOIN order_items oi
+ON o.order_id = oi.order_id
+WHERE oi.order_id IS NULL;
+
+
+-- Every Order has exactly one Shipping Record
+SELECT COUNT(*)
+FROM orders o
+LEFT JOIN shipping s
+ON o.order_id = s.order_id
+WHERE s.order_id IS NULL;
+
+
+-- ==========================================================
+
+-- Duplicate Primary Key Checks 
+
+SELECT customer_id, COUNT(*)
+FROM customers
+GROUP BY customer_id
+HAVING COUNT(*) > 1;
+
+SELECT department_id, COUNT(*)
+FROM departments
+GROUP BY department_id
+HAVING COUNT(*) > 1;
+
+SELECT category_id, COUNT(*)
+FROM categories
+GROUP BY category_id
+HAVING COUNT(*) > 1;
+
+SELECT product_id, COUNT(*)
+FROM products
+GROUP BY product_id
+HAVING COUNT(*) > 1;
+
+SELECT order_id, COUNT(*)
+FROM orders
+GROUP BY order_id
+HAVING COUNT(*) > 1;
+
+SELECT order_item_id, COUNT(*)
+FROM order_items
+GROUP BY order_item_id
+HAVING COUNT(*) > 1;
+
+
